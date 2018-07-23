@@ -4,11 +4,10 @@ public class MaxTemp{
 
     /** t1 and t2 are considered close enough if Math.abs(t1-t2) < EPSILON */
     public static final double EPSILON = 0.01;
+
+    /* add attributes as you need */
     double maxTemp = 0;
     double maxTempCount = 0;
-    /* add attributes as you need */
-
-
     /* ----------------------------------------------------
      * constructor
      * ----------------------------------------------------
@@ -39,23 +38,18 @@ public class MaxTemp{
         maxTempCount = countofMax;
     }
 
-
     /* ----------------------------------------------------
      * getter
      * ----------------------------------------------------
      */
 
     public double[] getMax(){
-
-
         // - returns an array of length 2 [max, count]
         //   where max is the maximum temperature (expressed in the Kelvin scale)
         //   of all Temperature objects passed to the constructor, and count
         //   is the number of times that temperature was present (in the input
         //   array of the constructor)
         //   If there are no temperatures then return the array [0.0, 0.0]
-
-
         return new double[]{maxTemp,maxTempCount};
     }
 
@@ -134,8 +128,7 @@ public class MaxTemp{
                 new Temperature(12, "K"),
                 new Temperature(4234.01, "K"),
                 new Temperature(-200.0, "K"),
-                new Temperature(1001.11, "K")
-        };
+                new Temperature(1001.11, "K")};
         MaxTemp arrayof2 = new MaxTemp(testarray);
         System.out.println((testarray[5].getTemp()));
         System.out.println("Max temp is " + arrayof2.getMax()[0] + "K and is there " + arrayof2.getMax()[1] + " times");

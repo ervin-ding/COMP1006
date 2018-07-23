@@ -15,7 +15,6 @@ public class Temperature{
     public double selectedTemperature = 0;
     public char selectedScale = 'C';
 
-
     /** Initializes a temperature object with given value in Celcius
      *
      *  If the initial temperature is less than -273.15 then the temperature
