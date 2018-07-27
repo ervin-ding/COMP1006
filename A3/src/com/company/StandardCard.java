@@ -124,15 +124,14 @@ public class StandardCard extends Card implements Comparable<Card>{
         return value;
     }
 
-    public static void main (String[] args)
-    {
-        for (int i = 1; i<RANKS.length; i+=1 ) {
-            for (int e = 0; e<SUITS.length-1; e+=1){
-                StandardCard card = new StandardCard(i, SUITS[e]);
-                System.out.println("RANKSTRING: " + card.getRankString() + ", RANKINT: " + card.getRank() + ", SUIT: " + card.getSuit() + ", " + card.toString());
-            }
-        }
-        Card j = new StandardCard(1, "None");
+    public static void main (String[] args) {
+//      int counter = 0;
+//      for (int i = 1; i<RANKS.length; i+=1 ) {
+//          for (int e = 0; e<SUITS.length-1; e+=1){
+//              StandardCard card = new StandardCard(i, SUITS[e]);
+//              System.out.println("RANKSTRING: " + card.getRankString() + ", RANKINT: " + card.getRank() + ", SUIT: " + card.getSuit() + ", " + card.toString());
+//              counter++
+        Card j = new StandardCard(3, "Spades");
         Card c = new StandardCard("Queen", "Diamonds");
         c.getRank();
         c.getRankString();
@@ -140,6 +139,23 @@ public class StandardCard extends Card implements Comparable<Card>{
         System.out.println(c);
         Card d = new StandardCard("4", "Spades");
         System.out.println(c.compareTo(d));
+        System.out.println(j.compareTo(d));
+        Deck deck = new Deck(10);
+//        deck.getCards(10);
+//        deck.getCards(10);
+//        deck.getCards(10);
+        deck.getCard();
+        deck.addCard(j);
+        Hand hand = new Hand(deck.getCards(10));
+        hand.remove(j);
+        System.out.println(hand.getCards());
+        hand.remove(j);
+        System.out.println(hand.getCards());
+
+        hand.add(c);
+        System.out.println(hand.getCards());
+        hand.remove(c);
+        System.out.println(hand.getCards());
     }
 
 }

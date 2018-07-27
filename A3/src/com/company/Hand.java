@@ -17,13 +17,29 @@ public class Hand{
     } 
   }
   
-  public List<Card> getCards(){ return this.cards; }
+  public List<Card> getCards(){
+    return this.cards;
+  }
   
   /* remove and return the specified card from the hand    */
   /* return null if the card is not in the hand            */
-  public Card remove(Card card){return new StandardCard(Card.SUITS[4], Card.RANKS[1]);}
+  public Card remove(Card card){
+    Card cardtoReturn = null;
+    for (int i=0;i<this.cards.size();i+=1) {
+      if (card == this.cards.get(i)){
+        cardtoReturn = card;
+        break;
+      }
+    }
+    if (cardtoReturn != null) {
+      this.cards.remove(cardtoReturn);
+    }
+    return cardtoReturn;
+  }
   
   /* add the specified card to the hand */
-  public void add(Card card){}
+  public void add(Card card){
+    this.cards.add(card);
+  }
   
 }
