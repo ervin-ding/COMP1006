@@ -50,6 +50,9 @@ public class StandardCard extends Card implements Comparable<Card>{
         this.rank = RANKS[rank];
     }
 
+    public void changeSuit(String suit){
+        this.suit=suit;
+    }
     public int getSuitInt(String suit) {
         int suitInt = 0;
         for (int i = 0; i<SUITS.length; i+=1) {
@@ -124,6 +127,7 @@ public class StandardCard extends Card implements Comparable<Card>{
         return value;
     }
 
+
     public static void main (String[] args) {
 //      int counter = 0;
 //      for (int i = 1; i<RANKS.length; i+=1 ) {
@@ -138,6 +142,8 @@ public class StandardCard extends Card implements Comparable<Card>{
         c.getSuit();
         System.out.println(c);
         Card d = new StandardCard("4", "Spades");
+        Card eight = new StandardCard("8", "Spades");
+
         System.out.println(c.compareTo(d));
         System.out.println(j.compareTo(d));
         Deck deck = new Deck(10);
@@ -146,16 +152,26 @@ public class StandardCard extends Card implements Comparable<Card>{
 //        deck.getCards(10);
         deck.getCard();
         deck.addCard(j);
-        Hand hand = new Hand(deck.getCards(10));
+        Hand hand = new Hand(deck.getCards(3));
+        System.out.println((hand.getCards()));
         hand.remove(j);
         System.out.println(hand.getCards());
         hand.remove(j);
         System.out.println(hand.getCards());
+        hand.add(eight);
 
         hand.add(c);
         System.out.println(hand.getCards());
         hand.remove(c);
         System.out.println(hand.getCards());
+        CrazyEightsPlayer player = new CrazyEightsPlayer(hand);
+        System.out.println(player.hand.getCards());
+        player.play(c,deck);
+        System.out.println(player.play(c,deck));
+        System.out.println(player.hand.getCards());
+
+
+
     }
 
 }

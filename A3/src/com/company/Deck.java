@@ -62,17 +62,25 @@ public class Deck{
         Card removedCard=deck.get(0);
         deck.remove(0 );
         System.out.println(removedCard.getRank() + removedCard.getSuit());
-          for (int i=0; i<deck.size();i+=1) {
-              System.out.println("Cards left " + deck.get(i) + " " + i);
-          }
+//          for (int i=0; i<deck.size();i+=1) {
+//              System.out.println("Cards left " + deck.get(i) + " " + i);
+//          }
         return removedCard;
       }
 
       public void addCard(Card c){
         deck.add((StandardCard) c);
-          for (int i=0; i<deck.size();i+=1) {
-              System.out.println("Cards left " + deck.get(i) + " " + i);
-          }
+//          for (int i=0; i<deck.size();i+=1) {
+//              System.out.println("Cards left " + deck.get(i) + " " + i);
+//          }
       }
+
+      public int numberOfCards(){
+        if( this.deck == null ){
+            return -1;
+        }else{
+            return this.deck.size();
+        }
+    }
 
 }
