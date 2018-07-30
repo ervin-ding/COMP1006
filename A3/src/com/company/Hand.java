@@ -26,9 +26,9 @@ public class Hand{
   public Card remove(Card card){
     Card cardtoReturn = null;
     for (int i=0;i<this.cards.size();i+=1) {
-      if (card == this.cards.get(i)){
-        cardtoReturn = card;
-        break;
+      if (card.compareTo(this.cards.get(i)) == 0){
+          cardtoReturn = card;
+          break;
       }
     }
     if (cardtoReturn != null) {

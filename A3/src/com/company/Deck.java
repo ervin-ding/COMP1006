@@ -9,9 +9,10 @@ import java.util.List;
 public class Deck{
     protected List <StandardCard> deck;
     public Deck(){
-    this(0);
+        this(0);
     }
 
+    // creates an array of size 52 + num_joker and creates card objects to fill the array.
     public Deck(int num_jokers){
         deck = new ArrayList<StandardCard>(52 + num_jokers);
         for (int i = 2; i<Card.RANKS.length; i+=1 ) {
@@ -24,57 +25,35 @@ public class Deck{
               StandardCard card = new StandardCard(1, "Joker");
               deck.add(card);
           }
-
-          // testing
-          for (int i=0; i<deck.size();i+=1)
-          {
-              System.out.println("Cards in deck " + deck.get(i) + " " + i);
-          }
-
       }
+
+      //returns a list of cards from the deck.
       public List<Card> getCards(int num_cards){
           List <Card> removedCards = new ArrayList<Card>(num_cards);
           for (int i=0; i<num_cards;i+=1) {
               removedCards.add(deck.get(i));
-              System.out.println("Cards added to removedCards " + deck.get(i) + " " + i);
           }
-          int counter = num_cards;
+          int counter = num_cards; // uses a counter to keep track of how many cards to remove.
           while (counter != 0) {
               deck.remove(0);
               counter-=1;
           }
-
-          // testing
-          for (int i=0; i<deck.size();i+=1) {
-              System.out.println("Cards removed " + deck.get(i) + " " + i);
-          }
-          // testing
-          for (int i=0; i<removedCards.size();i+=1)
-          {
-              System.out.println("Cards removed that are in removedCards " + removedCards.get(i) + " " + i);
-          }
-          System.out.println("Number cards left in the deck " + deck.size());
-          System.out.println("Number cards in hand " + removedCards.size());
           return removedCards;
       }
 
+      // returns a single card object from the deck. (First card)
       public Card getCard(){
         Card removedCard=deck.get(0);
         deck.remove(0 );
-        System.out.println(removedCard.getRank() + removedCard.getSuit());
-//          for (int i=0; i<deck.size();i+=1) {
-//              System.out.println("Cards left " + deck.get(i) + " " + i);
-//          }
         return removedCard;
       }
 
+      // adds a card object to the end of the list
       public void addCard(Card c){
         deck.add((StandardCard) c);
-//          for (int i=0; i<deck.size();i+=1) {
-//              System.out.println("Cards left " + deck.get(i) + " " + i);
-//          }
       }
 
+      // returns the number of cards in the deck
       public int numberOfCards(){
         if( this.deck == null ){
             return -1;
