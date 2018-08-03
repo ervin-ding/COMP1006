@@ -3,6 +3,7 @@ package com.company;
 public class TestImage {
 
     public static void main (String [] args){
+<<<<<<< HEAD
         boolean[][] data = {{false,false,false,false,false},
                             {false,true,true,false,false},
                             {false,false,false,false,false},
@@ -14,5 +15,8 @@ public class TestImage {
         Position p = new Position(0,0);
         System.out.println(image.isConnectedWithoutHoles());
         System.out.println(image.findPinHole(p));
+=======
+
+>>>>>>> Added A4
     }
 }
