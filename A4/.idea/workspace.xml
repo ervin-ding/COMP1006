@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="742f5022-200b-4be5-a61a-97a6ddc95e5d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/company/MyImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/MyImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/TestImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/TestImage.java" afterDir="false" />
-    </list>
+    <list default="true" id="742f5022-200b-4be5-a61a-97a6ddc95e5d" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -48,11 +45,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TestImage.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TestImage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/TestImage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1605">
-              <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
+            <state relative-caret-position="1395">
+              <caret line="93" column="66" selection-start-line="93" selection-start-column="66" selection-end-line="93" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -75,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyImage.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MyImage.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/MyImage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3570">
-              <caret line="238" selection-start-line="238" selection-end-line="238" />
+            <state relative-caret-position="137">
+              <caret line="100" lean-forward="true" selection-start-line="100" selection-end-line="100" />
               <folding>
                 <element signature="e#286#287#0" expanded="true" />
                 <element signature="e#318#319#0" expanded="true" />
@@ -208,6 +205,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="971" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" id="TODO" order="10" />
@@ -217,7 +215,7 @@
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.3522854" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.3522854" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info id="Capture Tool" order="2" />
@@ -398,10 +396,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/TestImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1395">
+          <caret line="93" column="66" selection-start-line="93" selection-start-column="66" selection-end-line="93" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/MyImage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3570">
-          <caret line="238" selection-start-line="238" selection-end-line="238" />
+        <state relative-caret-position="137">
+          <caret line="100" lean-forward="true" selection-start-line="100" selection-end-line="100" />
           <folding>
             <element signature="e#286#287#0" expanded="true" />
             <element signature="e#318#319#0" expanded="true" />
@@ -410,13 +415,6 @@
             <element signature="e#3380#3381#0" expanded="true" />
             <element signature="e#3422#3423#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/TestImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1605">
-          <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
         </state>
       </provider>
     </entry>
