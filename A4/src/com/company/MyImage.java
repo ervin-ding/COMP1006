@@ -224,8 +224,15 @@ public class MyImage extends Image {
                 colorisBlack = true; //use as flag to check if surroundings are black
                 target=find();
             }
-
-            return checkIfPinHole(target);
+            Position[] arrayOfPixels = new Position[getCols()*getRows()];
+            for (Position i : arrayOfPixels){
+                if (i != null) {
+                    if (checkIfPinHole(i)) {
+                        target = i;
+                    }
+                }
+            }
+            return target;
     }
     // create an array of all the pixels that matches what we're looking for.
     public Position[] findAll() {
@@ -269,21 +276,13 @@ public class MyImage extends Image {
     public int counter=0;
 
     //starting from target position, check if right,left,up,down are opposite of the target. if not, call checkIfPinHole again with new position.
-    public Position checkIfPinHole(Position p) {
+    public boolean checkIfPinHole(Position p) {
 //Array of positions, loop through it by recursively calling this with next position in the array
-        int x = p.getX();
-        int y = p.getY();
-        Position[] arrayofPixels = findAll();
-        System.out.println(arrayofPixels[0].toString());
-        System.out.println(getPixel(x,y)+" y " + x + " x " + y);
-        Position foundPinHole = null;
         if (sizeOfConnectedComponent(p) == 1) {
-            foundPinHole = p;
+            return true;
         }
         else {
-            this.counter += 1;
-            if (arrayofPixels[counter] != null) {
-                checkIfPinHole(arrayofPixels[counter]);
+           return false;
             }
         }
 
@@ -322,9 +321,7 @@ public class MyImage extends Image {
 //                    checkIfPinHole(arrayofPixels[counter]);
 //                }
 //            }
-//        }
-        return foundPinHole;
-    }
+//
 
 
 }
