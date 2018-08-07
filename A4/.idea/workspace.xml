@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="742f5022-200b-4be5-a61a-97a6ddc95e5d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/company/MyImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/TestImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/company/TestImage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/MyImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/MyImage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/TestImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/TestImage.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -13,6 +11,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/A4$Main.ic" NAME="Main Coverage Results" MODIFIED="1533606645933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="438841922">
@@ -24,12 +25,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="4895" />
+          <entry key="java" value="6294" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4895" />
+          <entry key="JAVA" value="6294" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -49,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/TestImage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="240">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
@@ -58,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Image.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="975">
-              <caret line="65" column="7" lean-forward="true" selection-start-line="60" selection-start-column="2" selection-end-line="65" selection-end-column="7" />
+            <state relative-caret-position="-2">
+              <caret line="64" column="1" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -67,15 +68,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/MyImage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="164" column="13" lean-forward="true" selection-start-line="164" selection-start-column="13" selection-end-line="164" selection-end-column="13" />
+            <state relative-caret-position="289">
+              <caret line="292" column="9" selection-start-line="292" selection-start-column="9" selection-end-line="292" selection-end-column="9" />
               <folding>
                 <element signature="e#129#130#0" expanded="true" />
                 <element signature="e#161#162#0" expanded="true" />
                 <element signature="e#167#168#0" expanded="true" />
                 <element signature="e#187#188#0" expanded="true" />
-                <element signature="e#7094#7095#0" expanded="true" />
-                <element signature="e#7121#7122#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -164,7 +163,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533595949969" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533607260328" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -224,8 +223,8 @@
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.37197453" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.37197453" />
+      <window_info active="true" anchor="bottom" id="Debug" order="7" visible="true" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" />
@@ -275,9 +274,21 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/MyImage.java</url>
-          <line>132</line>
+          <line>133</line>
           <properties />
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/company/MyImage.java</url>
+          <line>257</line>
+          <properties />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/company/MyImage.java</url>
+          <line>241</line>
+          <properties />
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -292,15 +303,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Image.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="65" column="7" lean-forward="true" selection-start-line="60" selection-start-column="2" selection-end-line="65" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/TestImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="-2">
+          <caret line="64" column="1" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -311,17 +315,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/TestImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/MyImage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="164" column="13" lean-forward="true" selection-start-line="164" selection-start-column="13" selection-end-line="164" selection-end-column="13" />
+        <state relative-caret-position="289">
+          <caret line="292" column="9" selection-start-line="292" selection-start-column="9" selection-end-line="292" selection-end-column="9" />
           <folding>
             <element signature="e#129#130#0" expanded="true" />
             <element signature="e#161#162#0" expanded="true" />
             <element signature="e#167#168#0" expanded="true" />
             <element signature="e#187#188#0" expanded="true" />
-            <element signature="e#7094#7095#0" expanded="true" />
-            <element signature="e#7121#7122#0" expanded="true" />
           </folding>
         </state>
       </provider>
