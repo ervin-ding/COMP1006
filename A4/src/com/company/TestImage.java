@@ -4,9 +4,9 @@ public class TestImage {
 
     public static void main (String [] args){
         boolean[][] data = {{false,false,false,false,false},
-                            {false,true,true,true,true},
+                            {false,true,true,false,false},
                             {false,false,false,true,false},
-                            {false,true,false,true,false},
+                            {false,true,false,false,false},
                             {false,false,false,true,false}};
         Image image = new MyImage(data);
         System.out.println(image.find());
