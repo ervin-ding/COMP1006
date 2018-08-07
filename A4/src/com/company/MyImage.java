@@ -6,7 +6,6 @@ public class MyImage extends Image {
     public boolean[][] visited = new boolean[getRows()][getCols()];
     public int size;
     boolean colorisBlack;
-    boolean colorisWhite;
 
     public MyImage(int rows, int cols){
         super(rows,cols);
@@ -85,17 +84,8 @@ public class MyImage extends Image {
 
 
     //when navigating: need to know 1.what color to look for (checkColor) 2. visited = false, otherwise set it to true 3.
-//    public void startcount(int x, int y){
-//        //if looking for black
-//        if (colorisBlack){
-//           navigate(x,y);
-//        }
-//        else {
-//            navigate(x,y);//looking for white.
-//        }
-//    }
-
     //TODO make the insides a method with x,y,and boolean value
+
     public void navigate(int x, int y) {
         //if looking for black
 //        if (colorisBlack) {
@@ -166,15 +156,6 @@ public class MyImage extends Image {
 //            }
 //        }
     }
-//    public boolean inBounds(int x, int y){
-//
-//        if ((x+1)>getCols()-1 || (x-1) < 0 || (y+1)>getRows()-1 || (y-1) < 0){
-//            return false;
-//        }
-//        else {
-//            return true;
-//        }
-//    }
     //check if the current pixel is true or false (black or white)
     public boolean checkColor(int x, int y){
         if (this.getPixel(x,y)){
@@ -231,19 +212,9 @@ public class MyImage extends Image {
      */
     @Override
     public Position findPinHole(Position p) {
-        if (isConnectedWithoutHoles()){
-            return null;
-        }
-        else {
             int x = p.getX();
             int y = p.getY();
             Position target;
-            //reset visited
-            for (int i = 0; i<this.rows; i+=1) {
-                for (int j = 0; j<this.cols; j+=1){
-                    visited[i][j] = false;
-                }
-            }
             //if true, p is black and must look for white pinhole
             if (checkColor(x,y)) {
                 colorisBlack = false; //use as flag to check if surroundings are white
@@ -253,10 +224,8 @@ public class MyImage extends Image {
                 colorisBlack = true; //use as flag to check if surroundings are black
                 target=find();
             }
-//            return checkIfPinHole(target.getX(), target.getY());
 
             return checkIfPinHole(target);
-        }
     }
     // create an array of all the pixels that matches what we're looking for.
     public Position[] findAll() {
@@ -266,12 +235,14 @@ public class MyImage extends Image {
             for (int c = 0; c < this.cols; c += 1) {
                 if (this.pixels[r][c] == colorisBlack) {
                     arrayOfPixels[counter] = new Position(r,c);
+                    System.out.println(arrayOfPixels[counter].toString());
                     counter += 1;
                 }
             }
         }
         return arrayOfPixels;
     }
+
 //    public Position findRecursive(Position p) {
 //        int x = p.getX();
 //        int y = p.getY();
@@ -295,23 +266,25 @@ public class MyImage extends Image {
 //        }
 //        return p;
 //    }
-public int counter=0;
-    Position[] arrayofPixels = findAll();
+    public int counter=0;
 
     //starting from target position, check if right,left,up,down are opposite of the target. if not, call checkIfPinHole again with new position.
     public Position checkIfPinHole(Position p) {
 //Array of positions, loop through it by recursively calling this with next position in the array
         int x = p.getX();
         int y = p.getY();
+        Position[] arrayofPixels = findAll();
+        System.out.println(arrayofPixels[0].toString());
         System.out.println(getPixel(x,y)+" y " + x + " x " + y);
         Position foundPinHole = null;
-        visited[x][y] = true;
         if (sizeOfConnectedComponent(p) == 1) {
             foundPinHole = p;
         }
         else {
-            counter += 1;
-            checkIfPinHole(arrayofPixels[counter]);
+            this.counter += 1;
+            if (arrayofPixels[counter] != null) {
+                checkIfPinHole(arrayofPixels[counter]);
+            }
         }
 
 //        if ((x + 1) <= getCols() - 1) {

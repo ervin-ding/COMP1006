@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="742f5022-200b-4be5-a61a-97a6ddc95e5d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/MyImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/company/MyImage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled104/com/company/TestImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled104/com/company/TestImage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/MyImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/MyImage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/TestImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/TestImage.java" afterDir="false" />
     </list>
@@ -28,12 +25,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="8012" />
+          <entry key="java" value="8418" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="8012" />
+          <entry key="JAVA" value="8418" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -53,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/TestImage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="51" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
+            <state relative-caret-position="135">
+              <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -71,14 +68,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/MyImage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="80" column="22" lean-forward="true" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="22" />
+            <state relative-caret-position="347">
+              <caret line="227" column="40" selection-start-line="227" selection-start-column="40" selection-end-line="227" selection-end-column="40" />
               <folding>
                 <element signature="e#129#130#0" expanded="true" />
                 <element signature="e#161#162#0" expanded="true" />
                 <element signature="e#167#168#0" expanded="true" />
                 <element signature="e#187#188#0" expanded="true" />
-                <marker date="1533614580492" expanded="true" signature="9807:10565" ph="..." />
+                <element signature="e#4659#4696#0" />
+                <element signature="e#11193#11234#0" />
+                <marker date="1533615766770" expanded="false" signature="9021:9779" ph="..." />
               </folding>
             </state>
           </provider>
@@ -167,7 +166,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533614580471" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533616129536" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -278,19 +277,28 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/MyImage.java</url>
-          <line>133</line>
+          <line>123</line>
           <properties />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/company/MyImage.java</url>
+          <line>277</line>
+          <properties />
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/com/company/MyImage.java</url>
-          <line>301</line>
+          <line>271</line>
           <properties class="com.company.MyImage" method="checkIfPinHole">
             <option name="EMULATED" value="true" />
           </properties>
-          <option name="timeStamp" value="20" />
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -301,10 +309,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/TestImage.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Image.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="51" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
+        <state relative-caret-position="-2">
+          <caret line="64" column="1" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -315,23 +323,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Image.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/TestImage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
-          <caret line="64" column="1" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="1" />
+        <state relative-caret-position="135">
+          <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/MyImage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="80" column="22" lean-forward="true" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="22" />
+        <state relative-caret-position="347">
+          <caret line="227" column="40" selection-start-line="227" selection-start-column="40" selection-end-line="227" selection-end-column="40" />
           <folding>
             <element signature="e#129#130#0" expanded="true" />
             <element signature="e#161#162#0" expanded="true" />
             <element signature="e#167#168#0" expanded="true" />
             <element signature="e#187#188#0" expanded="true" />
-            <marker date="1533614580492" expanded="true" signature="9807:10565" ph="..." />
+            <element signature="e#4659#4696#0" />
+            <element signature="e#11193#11234#0" />
+            <marker date="1533615766770" expanded="false" signature="9021:9779" ph="..." />
           </folding>
         </state>
       </provider>
