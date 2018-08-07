@@ -1,11 +1,12 @@
 package com.company;
 
-import java.util.NavigableMap;
-
 public class MyImage extends Image {
-    public boolean[][] visited = new boolean[getRows()][getCols()];
-    public int size;
-    boolean colorisBlack;
+    private boolean[][] visited;
+    private int size;
+    private boolean colorIsBlack;
+    private boolean pinHoleIsBlack;
+    private int counter;
+    private Position pinHolePosition;
 
     public MyImage(int rows, int cols){
         super(rows,cols);
@@ -13,17 +14,13 @@ public class MyImage extends Image {
     public MyImage(boolean[][] data){
         super(data);
     }
-    /** Finds some position in the image that has a black pixel
-     * or returns null of there are none.
-     *
-     * You do not need to use recursion for this. Any position with
-     * a black pixel value will be accepted.
-     */
+
+    //loops through the array of array and returns the first position that returns true;
     @Override
     public Position find() {
         for(int r=0; r<this.rows; r+=1){
             for(int c=0; c<this.cols; c+=1){
-                if (this.pixels[r][c] == true){
+                if (this.pixels[r][c]){
                     Position position = new Position(r,c);
                     return position;
                 }
@@ -31,10 +28,11 @@ public class MyImage extends Image {
         }
         return null;
     }
+    //same as find() but looks for a white pixel
     public Position findWhitePixel() {
         for(int r=0; r<this.rows; r+=1){
             for(int c=0; c<this.cols; c+=1){
-                if (this.pixels[r][c] == false){
+                if (!this.pixels[r][c]){
                     Position position = new Position(r,c);
                     return position;
                 }
@@ -42,289 +40,199 @@ public class MyImage extends Image {
         }
         return null;
     }
-    /** computes the size (area/number of positions) of the
-     * connected component containing position p.
-     *
-     * Two pixels are connected if
-     *  1) they are the same colour
-     *  2) there is a path (sequence of up/down/left/right steps) from
-     *     one pixel to the other, where all pixels on the path are the
-     *     same colour as the two pixels
-     *
-     * A connected component containing a position p consists of all pixels that
-     * are connected to the pixel at position p. (If p is black then all pixels
-     * in the connected component are blask; if p is white then all pixels in the connected
-     * component are white.)
-     *
-     * This method MUST be recursive.
-     */
+    //reset private attributes, sets the if target is black or white and calls the recursive function, navigate(x,y)
     @Override
     public int sizeOfConnectedComponent(Position p) {
-        //check if false, if false, find all adjacent positions that are false and recursively call sizeOfConnectedComponent.
-        //if true, find all adjacent positions that are true and recursively call sizeofConnectedComponent.
-        //NOTE: Remember to clear size when complete
         int x = p.getX();
         int y = p.getY();
-        //reset visited array everytime sizeOfConnectComponent gets called
-        for (int i = 0; i<this.rows; i+=1) {
-            for (int j = 0; j<this.cols; j+=1){
-                visited[i][j] = false;
-            }
-        }
-        size = 1;
-        colorisBlack=false;
+        visited = new boolean[getRows()][getCols()]; // reset visited array
+        size = 1; // reset size
+        colorIsBlack=false;
         if (checkColor(x,y)){
-            colorisBlack=true;
+            colorIsBlack=true;
         }
-        visited[x][y] = true;
+        visited[x][y] = true; //set current position as visited.
         navigate(x,y);
-        System.out.println("size = " + size);
         return size;
     }
 
-
-    //when navigating: need to know 1.what color to look for (checkColor) 2. visited = false, otherwise set it to true 3.
-    //TODO make the insides a method with x,y,and boolean value
-
+    /* navigate(x,y) will check if up, down, left, right are within the array of array. Then it will check if the
+     * adjacent pixel is the same as the target and if that position has been visited or not. Then it will set the
+     * adjacent position as visited, increment size by 1 and recursively calls navigate on the adjacent position */
     public void navigate(int x, int y) {
-        //if looking for black
-//        if (colorisBlack) {
-            if ((x + 1) <= getCols() - 1) {
-                if (checkColor(x + 1, y) == colorisBlack && !visited[x + 1][y]) {
-                    int adjacent = x + 1;
-                    visited[x + 1][y] = true;
-                    size += 1;
-                    navigate(adjacent, y);
-                }
+        if ((x + 1) <= getCols() - 1) {
+            if (checkColor(x + 1, y) == colorIsBlack && !visited[x + 1][y]) {
+                int adjacent = x + 1;
+                visited[x + 1][y] = true;
+                size += 1;
+                navigate(adjacent, y);
             }
-            if ((x - 1) >= 0) {
-                if (checkColor(x - 1, y) == colorisBlack && !visited[x - 1][y]) {
-                    int adjacent = x - 1;
-                    visited[x - 1][y] = true;
-                    size += 1;
-                    navigate(adjacent, y);
-                }
+        }
+        if ((x - 1) >= 0) {
+            if (checkColor(x - 1, y) == colorIsBlack && !visited[x - 1][y]) {
+                int adjacent = x - 1;
+                visited[x - 1][y] = true;
+                size += 1;
+                navigate(adjacent, y);
             }
-            if ((y + 1) <= getCols() - 1) {
-                if (checkColor(x, y + 1) == colorisBlack && !visited[x][y + 1]) {
-                    int adjacent = y + 1;
-                    visited[x][y + 1] = true;
-                    size += 1;
-                    navigate(x, adjacent);
-                }
+        }
+        if ((y + 1) <= getCols() - 1) {
+            if (checkColor(x, y + 1) == colorIsBlack && !visited[x][y + 1]) {
+                int adjacent = y + 1;
+                visited[x][y + 1] = true;
+                size += 1;
+                navigate(x, adjacent);
             }
-            if ((y - 1 >= 0)) {
-                if (checkColor(x, y - 1) == colorisBlack && !visited[x][y - 1]) {
-                    int adjacent = y - 1;
-                    visited[x][y - 1] = true;
-                    size += 1;
-                    navigate(x, adjacent);
-                }
+        }
+        if ((y - 1 >= 0)) {
+            if (checkColor(x, y - 1) == colorIsBlack && !visited[x][y - 1]) {
+                int adjacent = y - 1;
+                visited[x][y - 1] = true;
+                size += 1;
+                navigate(x, adjacent);
             }
-//        } else if (!colorisBlack) {
-//            if ((x + 1) <= getCols() - 1) {
-//                if (!checkColor(x + 1, y) && !visited[x + 1][y]) {
-//                    int adjacent = x + 1;
-//                    visited[x + 1][y] = true;
-//                    size += 1;
-//                    navigate(adjacent, y);
-//                }
-//            }
-//            if ((x - 1) >= 0) {
-//                if (!checkColor(x - 1, y) && !visited[x - 1][y]) {
-//                    int adjacent = x - 1;
-//                    visited[x - 1][y] = true;
-//                    size += 1;
-//                    navigate(adjacent, y);
-//                }
-//            }
-//            if ((y + 1) <= getCols() - 1) {
-//                if (!checkColor(x, y + 1) && !visited[x][y + 1]) {
-//                    int adjacent = y + 1;
-//                    visited[x][y + 1] = true;
-//                    size += 1;
-//                    navigate(x, adjacent);
-//                }
-//            }
-//            if ((y - 1 >= 0)) {
-//                if (!checkColor(x, y - 1) && !visited[x][y - 1]) {
-//                    int adjacent = y - 1;
-//                    visited[x][y - 1] = true;
-//                    size += 1;
-//                    navigate(x, adjacent);
-//                }
-//            }
-//        }
+        }
     }
+
     //check if the current pixel is true or false (black or white)
     public boolean checkColor(int x, int y){
-        if (this.getPixel(x,y)){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return this.getPixel(x, y);
     }
-    /** checks if the image consists of a single connected component
-     * that is black without any white "holes" in it or not.
-     * That is, it returns true if the image consists of a single
-     * black connected component and a single white connected component.
-     * (One or the other might have size 0)
-     */
+
+    /* sets a startingPosition by finding a pixel that is true (black). Call sizeOfConnectedComponent on
+     * startingPosition to get a size of black pixels. Compares that to the total number of pixels minus
+     * the number of connected white pixels (false). */
     @Override
     public boolean isConnectedWithoutHoles() {
-        Position startingPosition=find();
-        System.out.println("rows: " + getRows() + " cols " + getCols());
         int sizeofData = (getRows()*getCols());
-        int sizeofBlackPixels = sizeOfConnectedComponent(startingPosition);
-        //All black, return true
-        if (sizeofBlackPixels == sizeofData){
-            return true;
+        int sizeofBlackPixels = 0, sizeofWhitePixels = 0;
+        if (find() != null) {
+            sizeofBlackPixels = sizeOfConnectedComponent(find());
         }
-        else if (sizeofData-sizeOfConnectedComponent(findWhitePixel()) == sizeofBlackPixels){
-            return true;
+        if (findWhitePixel() != null){
+            sizeofWhitePixels = sizeOfConnectedComponent(findWhitePixel());
         }
-        else {
-            return false;
-        }
+        return (sizeofData - sizeofWhitePixels) == sizeofBlackPixels;
     }
-    /** Tries to find a "pin hole" in the connected component that
-     * contains the input position p.
-     *
-     * If the pixel at position p is black then it tries to find a
-     * white pixel that is completely surrounded by black pixels in
-     * the connected component.
-     * If the pixel at position p is white then it tries to find a
-     * black pixel that is completely surrounded by white pixels in
-     * the connected component.
-     *
-     * If there is more than one pixel that is a pin hole then returning any
-     * is suficient.
-     *
-     * Returns null if it cannot find a pin hole.
-     *
-     * This method MUST use recursion.
-     *
-     * Note: If isConnectedWithoutHoles is true then findPinHole(p) should
-     *       return null for all positions in the image.
-     *       If there is a position p such that findPinHole(p) finds a pin hole
-     *       then isConnectedWithoutHoles should be false.
+
+    /* check if the current position is black or white and set colorIsBlack as the opposite. Based on that,
+     * find the first pixel that is opposite. Reset counter and pinHolePosition and call checkIfPinHole which
+     * will set pinHolePosition.
+     * Black p (true) mean find a white position (false) surrounded by black (true)
      */
     @Override
     public Position findPinHole(Position p) {
-            int x = p.getX();
-            int y = p.getY();
-            Position target;
-            //if true, p is black and must look for white pinhole
-            if (checkColor(x,y)) {
-                colorisBlack = false; //use as flag to check if surroundings are white
-                target=findWhitePixel();
+        int x = p.getX();
+        int y = p.getY();
+        Position target;
+        //if true, p is black
+        if (checkColor(x,y)) {
+            pinHoleIsBlack = false; //use as flag to check if surroundings are black
+            //null check to make sure the pixels are not all false
+            if (findWhitePixel() != null) {
+                target = findWhitePixel();
             }
             else {
-                colorisBlack = true; //use as flag to check if surroundings are black
-                target=find();
+                target = null;
             }
-
-            return checkIfPinHole(target);
+        }
+        else {
+            pinHoleIsBlack = true; //use as flag to check if surroundings are white
+            //null check to make sure the pixels are not all true
+            if (find() != null) {
+                target = find();
+            }
+            else {
+                target = null;
+            }
+        }
+        this.counter = 0;
+        pinHolePosition=null;
+        if (target != null) {
+            checkIfPinHole(target);
+        }
+        return pinHolePosition;
     }
-    // create an array of all the pixels that matches what we're looking for.
+    // create an array of all the pixels that matches what we're looking for (based on pinHoleIsBlack).
     public Position[] findAll() {
-        int counter = 0 ;
-        Position[] arrayOfPixels = new Position[getCols()*getRows()];
+        int counter = 0;
+        int arraySize = 0;
         for(int r=0; r<this.rows; r+=1) {
             for (int c = 0; c < this.cols; c += 1) {
-                if (this.pixels[r][c] == colorisBlack) {
-                    arrayOfPixels[counter] = new Position(r,c);
-                    System.out.println(arrayOfPixels[counter].toString());
+                if (this.pixels[r][c] == pinHoleIsBlack) {
+                    arraySize += 1;
+                }
+            }
+        }
+        Position[] arrayOfMatchingPositions = new Position[arraySize];
+        for(int r=0; r<this.rows; r+=1) {
+            for (int c = 0; c < this.cols; c += 1) {
+                if (this.pixels[r][c] == pinHoleIsBlack) {
+                    arrayOfMatchingPositions[counter] = new Position(r,c);
                     counter += 1;
                 }
             }
         }
-        return arrayOfPixels;
+        return arrayOfMatchingPositions;
     }
 
-//    public Position findRecursive(Position p) {
-//        int x = p.getX();
-//        int y = p.getY();
-//        visited[x][y] = true;
-//        Position foundPinHole = null;
-//        if (sizeOfConnectedComponent(p) == 1) {
-//            return p;
-//        }
-//
-//        else {
-//            for (int i = 0; i<this.rows; i+=1) {
-//                for (int j = 0; j < this.cols; j += 1) {
-//                    if (!visited[i][j]) {
-//                        System.out.println(i + " " + j);
-//                        visited[i][j] = true;
-//                        foundPinHole = new Position(i, j);
-//                        findRecursive(foundPinHole);
-//                    }
-//                }
-//            }
-//        }
-//        return p;
-//    }
-    public int counter=0;
-
-    //starting from target position, check if right,left,up,down are opposite of the target. if not, call checkIfPinHole again with new position.
-    public Position checkIfPinHole(Position p) {
-//Array of positions, loop through it by recursively calling this with next position in the array
+    /* starting from target position, check if right, left, up, down are opposite of the pinHoleIsBlack. If not,
+     * recursively call checkIfPinHole again with next position from the arrayOfMatchingPositions.*/
+    public void checkIfPinHole(Position p) {
+        boolean up = false, down = false, right = false, left = false;
         int x = p.getX();
         int y = p.getY();
-        Position[] arrayofPixels = findAll();
-        System.out.println(arrayofPixels[0].toString());
-        System.out.println(getPixel(x,y)+" y " + x + " x " + y);
-        Position foundPinHole = null;
-        if (sizeOfConnectedComponent(p) == 1) {
-            foundPinHole = p;
-        }
-        else {
-            this.counter += 1;
-            if (arrayofPixels[counter] != null) {
-                checkIfPinHole(arrayofPixels[counter]);
+        Position[] arrayOfMatchingPositions = findAll();
+        if (sizeOfConnectedComponent(p) == 1 ) {
+            //check if in bounds
+            if ((x + 1) <= getCols() - 1) {
+                //if adjacent position is opposite, set direction as true
+                if (checkColor(x + 1, y) != pinHoleIsBlack) {
+                    right = true;
+                    //check if counter is within bounds of the array
+                } else if(counter < arrayOfMatchingPositions.length-1) {
+                    this.counter += 1;
+                    checkIfPinHole(arrayOfMatchingPositions[counter]);
+                }
+            }
+            if ((x - 1) >= 0) {
+                if (checkColor(x - 1, y) != pinHoleIsBlack) {
+                    left = true;
+                } else if(counter < arrayOfMatchingPositions.length-1) {
+                    this.counter += 1;
+                    checkIfPinHole(arrayOfMatchingPositions[counter]);
+                }
+            }
+            if ((y + 1) <= getCols() - 1) {
+                if (checkColor(x, y + 1) != pinHoleIsBlack) {
+                    up = true;
+                } else if(counter < arrayOfMatchingPositions.length-1) {
+                    this.counter += 1;
+                    checkIfPinHole(arrayOfMatchingPositions[counter]);
+                }
+            }
+            if ((y - 1 >= 0)) {
+                if (checkColor(x, y - 1) != pinHoleIsBlack) {
+                    down = true;
+                } else if(counter < arrayOfMatchingPositions.length-1) {
+                    this.counter += 1;
+                    checkIfPinHole(arrayOfMatchingPositions[counter]);
+                }
+                //if in bounds but adjacent is not opposite of pinHoleIsBlack
+            } else if(counter < arrayOfMatchingPositions.length-1) {
+                this.counter += 1;
+                checkIfPinHole(arrayOfMatchingPositions[counter]);
             }
         }
-
-//        if ((x + 1) <= getCols() - 1) {
-//            if (checkColor(x + 1, y) == colorisBlack) { //if same color, call checkIfPinHole
-//                int adjacent = x + 1;
-//                if (!visited[adjacent][y]) {
-//                    counter += 1;
-//                    checkIfPinHole(arrayofPixels[counter]);
-//                }
-//            }
-//        }
-//        if ((x - 1) >= 0) {
-//            if (checkColor(x - 1, y) == colorisBlack) {
-//                int adjacent = x - 1;
-//                if (!visited[adjacent][y]) {
-//                    counter += 1;
-//                    checkIfPinHole(arrayofPixels[counter]);
-//                }
-//            }
-//        }
-//        if ((y + 1) <= getCols() - 1) {
-//            if (checkColor(x, y + 1) == colorisBlack) {
-//                int adjacent = y + 1;
-//                if (!visited[x][adjacent]) {
-//                    counter += 1;
-//                    checkIfPinHole(arrayofPixels[counter]);
-//                }
-//            }
-//        }
-//        if ((y - 1 >= 0)) {
-//            if (checkColor(x, y - 1) == colorisBlack) {
-//                int adjacent = y - 1;
-//                if (!visited[x][adjacent]) {
-//                    counter += 1;
-//                    checkIfPinHole(arrayofPixels[counter]);
-//                }
-//            }
-//        }
-        return foundPinHole;
+        //if position is not size 1, check the next position in the array
+        else if (counter < arrayOfMatchingPositions.length-1) {
+            this.counter += 1;
+            if (arrayOfMatchingPositions[counter] != null) {
+                checkIfPinHole(arrayOfMatchingPositions[counter]);
+            }
+        }
+        if (up && down && left && right) {
+            pinHolePosition = p;
+        }
     }
-
-
 }
