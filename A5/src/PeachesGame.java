@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class PeachesGame{
@@ -24,20 +25,32 @@ public class PeachesGame{
        System.out.println(pp.getLocation());
        System.out.println(pp.getLocation().getPlayers());
     }
-    
-    
-    // what the game might look like...
-    while( w.getHome().numberOfPeaches() <= 100 ){
-      // iterate over all locations in the world
-      for(Location location: w.getLocations()){
-        // iterate over all players in the current location
-        for(Player player: location.getPlayers() ){
-          System.out.println(player.getName() + ", " + player.getLocation());
-          player.play();
-        }
-      }
-      
-    }
+    ArrayList<Player> players = new ArrayList<>();
+    players.add(p);
+    players.add(q);
+    Position t = new Position (1,1);
+
+    PeachGrove peach = new PeachGrove(t, "blah",players, new ArrayList<Peach>());
+    System.out.println(peach.numberOfPeaches());
+    peach.enter(p);
+    peach.enter(p);
+    peach.enter(p);
+
+    peach.getPeach();
+    System.out.println(peach.numberOfPeaches());
+
+//    // what the game might look like...
+//    while( w.getHome().numberOfPeaches() <= 100 ){
+//      // iterate over all locations in the world
+//      for(Location location: w.getLocations()){
+//        // iterate over all players in the current location
+//        for(Player player: location.getPlayers() ){
+//          System.out.println(player.getName() + ", " + player.getLocation());
+//          player.play();
+//        }
+//      }
+//
+//    }
     
   }
 }
