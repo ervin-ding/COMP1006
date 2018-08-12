@@ -8,8 +8,8 @@ public class PeachGrove extends Location{
         super(p, description, people, peaches);
         peachTrees = new ArrayList<>();
         playersThatVisited = new ArrayList<>();
-        int numOfTrees = 5 + (int) (Math.random() * 5);
-        int numOfPeachesInTree = 1 + (int) (Math.random() * 5);
+        int numOfTrees = 10 + (int) (Math.random() * 5);
+        int numOfPeachesInTree = 5 + (int) (Math.random() * 5);
 
         for (int i = 0; i < numOfTrees; i+=1){
             List<Peach> peachTree = new ArrayList<>();
