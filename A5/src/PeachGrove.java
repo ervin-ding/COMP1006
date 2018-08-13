@@ -8,8 +8,8 @@ public class PeachGrove extends Location{
         super(p, description, people, peaches);
         peachTrees = new ArrayList<>();
         playersThatVisited = new ArrayList<>();
-        int numOfTrees = 10 + (int) (Math.random() * 5);
-        int numOfPeachesInTree = 10 + (int) (Math.random() * 5);
+        int numOfTrees = 5 + (int) (Math.random() * 5);
+        int numOfPeachesInTree = 5 + (int) (Math.random() * 5);
 
         for (int i = 0; i < numOfTrees; i+=1){
             List<Peach> peachTree = new ArrayList<>();
@@ -31,7 +31,7 @@ public class PeachGrove extends Location{
         System.out.println(p.getName() + " just entered location " + description + position);
         playersThatVisited.add(p);
         peopleAtLocation.add(p);
-        System.out.println(playersThatVisited.toString());
+        System.out.println("Players that visited: " + playersThatVisited.toString());
         beeSting(p);
         p.setLocation(this);
     }
@@ -54,7 +54,7 @@ public class PeachGrove extends Location{
                 counter += 1;
                 if (Math.random() > 0.5) {
                     p.setHealth(p.getHealth() - (5));
-                    System.out.println(p.getName() + " got stung " + counter + " times and has " + p.getHealth() + " left.");
+                    System.out.println(p.getName() + " got stung " + counter + " times and has " + p.getHealth() + " health left.");
                 }
 
             }

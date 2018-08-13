@@ -30,21 +30,21 @@ public class PeachesGame{
     players.add(q);
 
     PeachGrove peachgrove = new PeachGrove(w.locations[1][1].getPosition(), "PeachGrove",players, new ArrayList<Peach>());
+    w.locations[1][1] = peachgrove;
+    w.locations[0][0] = w.home;
     System.out.println(w.getLocations());
-    System.out.println(w.locations[1][1].position);
+    System.out.println(w.locations[1][1]);
     System.out.println(peachgrove.numberOfPeaches());
     peachgrove.getPeach();
     System.out.println(peachgrove.numberOfPeaches());
-//    peachgrove.enter(p);
-//    peachgrove.enter(p);
-//    peachgrove.enter(p);
 
 
 
 
-    Player hunter = new PeachHunter(w,"Hunter",w.home,new ArrayList<Peach>(),100,RGB.RED);
-    peachgrove.enter(hunter);
-    hunter.setLocation(peachgrove);
+
+    Player hunter = new PeachHunter(w,"Hunter",w.home,new ArrayList<Peach>(),50,RGB.RED);
+    hunter.move(1);
+    hunter.move(3);
 
 
 

@@ -23,9 +23,21 @@ public class PeachHunter extends Player {
     protected String descriptionOfPeachGrove = "PeachGrove";
     protected int maxPeaches;
     protected boolean healthBelowFifty;
-    public List<Location> peachGroves;
+    protected List<Location> peachGroves;
+    public List <Location> peachPits;
     public PeachHunter(World w, String name, Location location, List<Peach> peaches, int health, RGB rgb) {
         super(w, name, location, peaches, health, rgb);
+        maxPeaches = 100;
+        healthBelowFifty = false;
+        peachGroves = new ArrayList<>();
+        peachPits = new ArrayList<>();
+    }
+
+    protected boolean isPeachGrove;
+    //if peaches > 50, setLocation home.
+    @Override //when location is set, grab as many peaches as possible.
+    public void setLocation(Location location) {
+        this.location = location;
         if (health >= 50){
             maxPeaches = 100;
             healthBelowFifty = false;
@@ -34,30 +46,21 @@ public class PeachHunter extends Player {
             maxPeaches = 25;
             healthBelowFifty = true;
         }
-        peachGroves = new ArrayList<>();
-    }
-
-    protected boolean isPeachGrove;
-    //if peaches > 50, setLocation home.
-    @Override //when location is set, grab as many peaches as possible.
-    public void setLocation(Location location) {
-        this.location = location;
         //if the description of the location matches the description of a peachgrove, check if the position is already
         //in the peachGroves list. If not, add it to the list.
         if (location.getDescription().equals(descriptionOfPeachGrove)) {
            // isPeachGrove = true;
             if (!peachGroves.contains(location)) {
                 peachGroves.add(location);
-                System.out.println("???");
+                System.out.println("This PeachGrove has been added to " + this + "\'s lists of PeachGroves");
             }
-
         }
 
 
         // grab peaches
         while (peaches.size() < maxPeaches && location.numberOfPeaches() > 0 && location != world.home) {
             peaches.add(location.getPeach());
-            System.out.println("Grabbing peaches" + peaches.size() + "removing from "+ location + location.numberOfPeaches());
+            System.out.println(this + " grabbed " + peaches.size() + " peaches from " + location + ". Peaches left: " + location.numberOfPeaches());
         }
 
         if (!healthBelowFifty) {
@@ -78,7 +81,7 @@ public class PeachHunter extends Player {
         //drop all peaches at home
         while (peaches.size() > 0){
             location.addPeach(peaches.remove(0));
-            System.out.println("Dropping peaches" + peaches.size());
+            System.out.println(this + " dropped " + peaches.size() + " peaches Home" /*+this.getWorld().getHome()*/);
         }
         //go back to a peachgrove if peaches are left.
         for (int i = 0; i < peachGroves.size(); i += 1) {
