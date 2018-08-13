@@ -8,36 +8,47 @@ public class PeachesGame{
     Player q = new Player(w, "dog", w.home, new ArrayList<Peach>(), 100, RGB.BLUE);
     w.addPlayer(p).addPlayer(q);
     
-    System.out.println("Home : " + w.getHome());
-    System.out.println("  Players at Home : " + w.getHome().getPlayers());
-    System.out.println("Location of all players in world");
-    for(Player pp: w.getPlayers()){
-       System.out.println(pp.getLocation());
-       System.out.println(pp.getLocation().getPlayers());
-    }
+//    System.out.println("Home : " + w.getHome());
+//    System.out.println("  Players at Home : " + w.getHome().getPlayers());
+//    System.out.println("Location of all players in world");
+//    for(Player pp: w.getPlayers()){
+//       System.out.println(pp.getLocation());
+//       System.out.println(pp.getLocation().getPlayers());
+//    }
+//
+//    System.out.println("Move some players in world");
+//    p.move(Directions.DOWN);
+//    q.move(Directions.RIGHT);
+//    System.out.println("Location of all players in world");
     
-    System.out.println("Move some players in world");
-    p.move(Directions.DOWN);
-    q.move(Directions.RIGHT);
-    System.out.println("Location of all players in world");
-    
-    for(Player pp: w.getPlayers()){
-       System.out.println(pp.getLocation());
-       System.out.println(pp.getLocation().getPlayers());
-    }
+//    for(Player pp: w.getPlayers()){
+//       System.out.println(pp.getLocation());
+//       System.out.println(pp.getLocation().getPlayers());
+//    }
     ArrayList<Player> players = new ArrayList<>();
     players.add(p);
     players.add(q);
-    Position t = new Position (1,1);
 
-    PeachGrove peach = new PeachGrove(t, "blah",players, new ArrayList<Peach>());
-    System.out.println(peach.numberOfPeaches());
-    peach.enter(p);
-    peach.enter(p);
-    peach.enter(p);
+    PeachGrove peachgrove = new PeachGrove(w.locations[1][1].getPosition(), "PeachGrove",players, new ArrayList<Peach>());
+    System.out.println(w.getLocations());
+    System.out.println(w.locations[1][1].position);
+    System.out.println(peachgrove.numberOfPeaches());
+    peachgrove.getPeach();
+    System.out.println(peachgrove.numberOfPeaches());
+//    peachgrove.enter(p);
+//    peachgrove.enter(p);
+//    peachgrove.enter(p);
 
-    peach.getPeach();
-    System.out.println(peach.numberOfPeaches());
+
+
+
+    Player hunter = new PeachHunter(w,"Hunter",w.home,new ArrayList<Peach>(),100,RGB.RED);
+    peachgrove.enter(hunter);
+    hunter.setLocation(peachgrove);
+
+
+
+
 
 //    // what the game might look like...
 //    while( w.getHome().numberOfPeaches() <= 100 ){
