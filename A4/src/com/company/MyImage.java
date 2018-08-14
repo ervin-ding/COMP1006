@@ -1,5 +1,4 @@
 package com.company;
-
 public class MyImage extends Image {
     private boolean[][] visited;
     private int size;
