@@ -38,32 +38,47 @@ public class World{
     return this;
   }
   
-  public boolean move(Player p, int direction){
+  public void move(Player p, int direction){
     Location loc = p.getLocation(); // player's current location
     int x = loc.getPosition().getX();
     int y = loc.getPosition().getY();
     Location newLocation = null;
-    // 
+
     switch(direction){
-      case Directions.UP: 
-        newLocation = locations[x-1][y]; 
-        break;
-      case Directions.DOWN: 
-        newLocation = locations[x+1][y]; 
-        break;
-      case Directions.LEFT: 
-        newLocation = locations[x][y-1]; 
-        break;
-      case Directions.RIGHT: 
-        newLocation = locations[x][y+1]; 
-        break;
+      case Directions.UP:
+        if (x-1 >= 0) {
+          newLocation = locations[x - 1][y];
+          break;
+        }
+      case Directions.DOWN:
+        if (x+1 <= 2) {
+          newLocation = locations[x + 1][y];
+          break;
+        }
+      case Directions.LEFT:
+        if (y-1 >= 0) {
+          newLocation = locations[x][y - 1];
+          break;
+        }
+      case Directions.RIGHT:
+        if (y+1 <= 2) {
+          newLocation = locations[x][y + 1];
+          break;
+        }
       default: break;
+    }
+//    if (newLocation == null)
+//    {
+//      int num = (int) Math.random() *3;
+//      p.move(num);
+//    }
+    if (newLocation == null){
+      return;
     }
     loc.exit(p);
     newLocation.enter(p);
     
-    
-    return true;
+
   }
   
   

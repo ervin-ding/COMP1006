@@ -1,3 +1,5 @@
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
 import java.util.List;
 
 /** A Player in the game 
@@ -57,6 +59,9 @@ public class Player{
      getHelp();
      return;
    }
+   int num = (int)(Math.random() * 4);
+   System.out.println(num);
+   this.move(num);
  }
  
  
@@ -66,10 +71,10 @@ public class Player{
    * @return true if the move was successful and false otherwise (e.g. when trying to move from one 
    *         location to another that are not connected)
    */
- public boolean move(int direction){
+ public void move(int direction){
    // move from current location to new location (if possible)
    world.move(this, direction);
-   return false;
+
  }
  
  /** sets a player's current location

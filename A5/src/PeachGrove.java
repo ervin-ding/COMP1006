@@ -4,12 +4,13 @@ import java.util.List;
 public class PeachGrove extends Location{
     protected List<List<Peach>> peachTrees;
     protected List<Player> playersThatVisited;
+    protected List<Peach> peaches;
     public PeachGrove(Position p, String description, List<Player> people, List<Peach> peaches){
         super(p, description, people, peaches);
         peachTrees = new ArrayList<>();
         playersThatVisited = new ArrayList<>();
-        int numOfTrees = 5 + (int) (Math.random() * 5);
-        int numOfPeachesInTree = 5 + (int) (Math.random() * 5);
+        int numOfTrees = 10 + (int) (Math.random() * 5);
+        int numOfPeachesInTree = 10 + (int) (Math.random() * 5);
 
         for (int i = 0; i < numOfTrees; i+=1){
             List<Peach> peachTree = new ArrayList<>();
