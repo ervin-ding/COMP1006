@@ -33,28 +33,26 @@ public class PitFinder extends Player {
 
                 pitLocations.add(location);
 
-                setLocation(getWorld().getHome());
+                getLocation().exit(this);
+
+                getWorld().getHome().enter(this);
 
                 getWorld().getHome().addPeachPit(location);
 
-                setLocation(location);
-
                 System.out.println(getName() + " is now at home and has announced the new pit location.");
-
-
 
                 System.out.println("Added previously undiscovered Peach Pit location to " + name + "'s list.");
 
             }
 
         }
-        Player target = null;
-        for (int i = 0; i < location.getPlayers().size(); i += 1) {
-            if (location.getPlayers().get(i) instanceof PeachHunter) {
-                target = location.getPlayers().get(i);
-            }
-        }
-        interact(target);
+//        Player target = null;
+//        for (int i = 0; i < location.getPlayers().size(); i += 1) {
+//            if (location.getPlayers().get(i) instanceof PeachHunter) {
+//                target = location.getPlayers().get(i);
+//            }
+//        }
+//        interact(target);
 
     }
 

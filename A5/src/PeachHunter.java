@@ -91,10 +91,10 @@ public class PeachHunter extends Player {
                 }
             }
         }
-//        else {
-//            getLocation().exit(this);
-//            getWorld().getHome().enter(this);
-//        }
+        else {
+            getLocation().exit(this);
+            getWorld().getHome().enter(this);
+        }
     }
 
     @Override //Check for if less than 50, drop peaches until 25 peaches

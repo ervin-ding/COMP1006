@@ -73,6 +73,7 @@ public class Player{
    */
  public void move(int direction){
    // move from current location to new location (if possible)
+     System.out.println(this + " has moved " + direction);
    world.move(this, direction);
 
  }

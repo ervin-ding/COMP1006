@@ -43,12 +43,13 @@ public class PeachThief extends Player{
     }
 
     protected boolean probability;
-    public void eat(Peach p) {
+    public void eat(Peach peach) {
         /*
         simply eat a peach and gain health
         */
-        this.setHealth(this.health + 10);
-        System.out.println(this + " has gained 10 health");
+        int peachRipeness = peach.getRipeness();
+        setHealth(getHealth() + peachRipeness);
+        System.out.println(this + " has gained " + peachRipeness + " health from the stolen peach" );
     }
     @Override
     public void interact(Player p) {

@@ -19,9 +19,7 @@ public class Helper extends Player {
 
     /** Helper does not play */
     @Override
-    public void play(){
-        location.exit(this);
-    }
+    public void play() {}
 
     @Override
     /** A helper's health will never change.
@@ -41,10 +39,17 @@ public class Helper extends Player {
      */
     public void interact(Player p){
         for (int i = 0; i < 10; i +=1) {
-            forceFeed(p);
+            if (this.peaches.size() > 0) {
+                forceFeed(p);
+            }
         }
-        this.getLocation().exit(this);
+        getLocation().exit(this);
         getWorld().getHome().enter(this);
+        for (int i = 0; i < getWorld().getPlayers().size(); i += 1){
+            if (getWorld().getPlayers().get(i).equals(this)){
+                getWorld().players.remove(this);
+            }
+        }
     }
 
     public void forceFeed(Player p) {
@@ -55,14 +60,14 @@ public class Helper extends Player {
         p.setHealth(p.getHealth() + peachRipeness);
         System.out.println(p + " has gained " + peachRipeness + " health" );
     }
-    /** Helpers will always have the same name/health, and quite possibly location*/
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        return false;
-    }
+//    /** Helpers will always have the same name/health, and quite possibly location*/
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) {
+//            return true;
+//        }
+//        return false;
+//    }
 
 
 }

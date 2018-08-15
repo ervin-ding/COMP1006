@@ -36,7 +36,6 @@ public class Home extends Location {
     @Override
     public void callForHelp(Player p, Location l){
         Helper helper = new Helper(p.getWorld(),null, p.getWorld().getHome(), new ArrayList<Peach>(), 1000000, null);
-        p.getWorld().addPlayer(helper);
         for (int i = 0; i < 10; i++) { // instantiate 10 good peaches with varying levels of ripeness
             helper.peaches.add(new Peach(new Random().nextInt(10) + 1, false));
         }

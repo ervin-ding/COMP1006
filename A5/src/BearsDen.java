@@ -69,7 +69,6 @@ public class BearsDen extends Location {
 
         visitedPlayers.add(p);
 
-        exit(p);
     }
 
     public void bearAttack(Player p) {
