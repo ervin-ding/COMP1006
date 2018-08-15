@@ -31,7 +31,7 @@ public class PeachThief extends Player{
             stealing a peach
              */
             eat(p.getPeach());
-                System.out.println("This player has stolen a peach");
+            System.out.println("This player has stolen a peach");
     }
 
     public void steal(Player p){

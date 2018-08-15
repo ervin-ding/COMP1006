@@ -54,7 +54,13 @@ public class PeachGrove extends Location{
             if (playersThatVisited.get(i).equals(p)){
                 counter += 1;
                 if (Math.random() > 0.5) {
-                    p.setHealth(p.getHealth() - (5));
+                    if (p.getHealth() > 0) {
+                        p.setHealth(p.getHealth() - (5));
+                    }
+                    else {
+                        p.getWorld().getHome().enter(p);
+                        p.setHealth(100);
+                    }
                     System.out.println(p.getName() + " got stung " + counter + " times and has " + p.getHealth() + " health left.");
                 }
 

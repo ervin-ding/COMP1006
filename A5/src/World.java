@@ -20,7 +20,7 @@ public class World{
   
   public List<Player> getPlayers(){ return players; }
   public Location[][] getWorld(){ return locations; } 
-  public Location getHome(){ return home; }
+  public Home getHome(){ return (Home) home; }
  
   public List<Location> getLocations(){
     List<Location> list = new ArrayList<Location>(locations.length*locations[0].length);

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class PitFinder extends Player {
 
-    protected ArrayList<PeachPit> pitLocations = null;
+    protected ArrayList<Location> pitLocations;
 
 
 
@@ -13,7 +13,7 @@ public class PitFinder extends Player {
 
         super(w, name, location, peaches, health, rgb);
 
-        pitLocations = new ArrayList<PeachPit>();
+        pitLocations = new ArrayList<>();
 
         System.out.println("New PitFinder " + name + " created.");
 
@@ -31,16 +31,14 @@ public class PitFinder extends Player {
 
             if(!pitLocations.contains(location)) {
 
-                PeachPit newPit = (PeachPit)location;
-
-                pitLocations.add(newPit);
+                pitLocations.add(location);
 
                 setLocation(getWorld().getHome());
 
-                //world.home.;
+                Home home = (Home) getWorld().getHome();
+                home.addPeachPit(location);
 
                 setLocation(location);
-
 
                 System.out.println(getName() + " is now at home and has announced the new pit location.");
 

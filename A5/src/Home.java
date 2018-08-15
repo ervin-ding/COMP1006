@@ -2,6 +2,9 @@ import java.util.*;
 
 public class Home extends Location {
 
+    // used to keep track of who has been in the pit;
+    protected ArrayList<Location> pitHome;
+
     // used to keep track of peaches players have stockpiled at the Home location
     protected Map<Player, ArrayList<Peach>> peaches;
 
@@ -9,8 +12,13 @@ public class Home extends Location {
         super(p,description, people, peaches);
         // ensures there will never be more than 1 home created
         this.peaches = new HashMap<Player, ArrayList<Peach>>();
+        pitHome = new ArrayList<>();
     }
 
+
+    public void addPeachPit(Location location){
+        pitHome.add(location);
+    }
     /** getter for peaches stored at Home location for all players */
     public Map<Player, ArrayList<Peach>> getPeaches(){ return peaches; }
 
@@ -25,6 +33,7 @@ public class Home extends Location {
      * @param p the player who calls the getHelp method
      * @param l that player's current location
      */
+    @Override
     public void callForHelp(Player p, Location l){
         Helper helper = new Helper(p.getWorld(),null, p.getWorld().getHome(), new ArrayList<Peach>(), 1000000, null);
         p.getWorld().addPlayer(helper);
@@ -39,9 +48,6 @@ public class Home extends Location {
     // Home location does not store any peaches outside of player inventory
     @Override
     public Peach getPeach(){return null;}
-
-    @Override
-    public void addPeach(Peach p) {}
 
 
 }

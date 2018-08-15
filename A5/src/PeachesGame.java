@@ -4,9 +4,9 @@ import java.util.List;
 public class PeachesGame{
   public static void main(String[] args) {
     World w = new World();
-    PeachHunter peachHunter = new PeachHunter(w, "PeachHunter", w.home, new ArrayList<Peach>(), 50, RGB.RED);
-    PeachThief peachThief = new PeachThief(w, "PeachThief", w.home, new ArrayList<Peach>(), 50, RGB.BLUE);
-    PitFinder pitFinder = new PitFinder(w, "PitFinder", w.home, new ArrayList<Peach>(), 50, RGB.YELLOW);
+    PeachHunter peachHunter = new PeachHunter(w, "PeachHunter", w.home, new ArrayList<Peach>(), 20, RGB.RED);
+    PeachThief peachThief = new PeachThief(w, "PeachThief", w.home, new ArrayList<Peach>(), 100, RGB.BLUE);
+    PitFinder pitFinder = new PitFinder(w, "PitFinder", w.home, new ArrayList<Peach>(), 100, RGB.YELLOW);
     w.addPlayer(peachHunter).addPlayer(peachThief).addPlayer(pitFinder);
 
     List<Peach> peaches = new ArrayList<>();
@@ -21,8 +21,8 @@ public class PeachesGame{
     w.locations[0][0] = home;
     w.home=home;
     w.locations[0][1] = peachGrove;
-    w.locations[1][0] = peachPit;
-    w.locations[1][1] = bearsDen;
+    w.locations[1][1] = peachPit;
+    w.locations[1][0] = bearsDen;
     System.out.println(w.getHome());
     System.out.println(w.getLocations());
 
@@ -30,7 +30,7 @@ public class PeachesGame{
     // what the game might look like...
     while (w.getHome().numberOfPeaches() < 100) {
       // iterate over all locations in the world
-      System.out.println(w.getHome().numberOfPeaches());
+      System.out.println("peaches at home: " + w.getHome().numberOfPeaches());
       System.out.println("tes1");
       for (Location location : w.getLocations()) {
         System.out.println("tes2");

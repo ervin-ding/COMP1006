@@ -59,7 +59,7 @@ public class PeachHunter extends Player {
                 goHomeAndReturnToPeachGrove();
             }
             else {
-                setLocation(getWorld().getHome());
+                getWorld().getHome().enter(this);
             }
         }
         else if (healthBelowFifty && (!location.equals(getWorld().getHome()))){
@@ -72,16 +72,18 @@ public class PeachHunter extends Player {
         }
     }
     protected void goHomeAndReturnToPeachGrove() {
-        this.getWorld().getHome().enter(this);
+        getWorld().getHome().enter(this);
         //drop all peaches at home
         while (peaches.size() > 0){
             location.addPeach(peaches.remove(0));
             System.out.println(this + " dropped " + peaches.size() + " peaches Home" /*+this.getWorld().getHome()*/);
         }
         //go back to a peachgrove if peaches are left.
-        for (int i = 0; i < peachGroves.size(); i += 1) {
-            if (peachGroves.get(i).numberOfPeaches() > 0) {
-                peachGroves.get(i).enter(this);
+        if (health <= 0){
+            for (int i = 0; i < peachGroves.size(); i += 1) {
+                if (peachGroves.get(i).numberOfPeaches() > 0) {
+                    peachGroves.get(i).enter(this);
+                }
             }
         }
     }

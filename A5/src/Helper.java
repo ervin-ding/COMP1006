@@ -14,18 +14,12 @@ public class Helper extends Player {
         this.location = w.getHome(); // helpers can only be instantiated in the home world
     }
 
-    @Override
-    /** Peaches cannot be taken from a helper, so we return null. */
-    public Peach getPeach(){ return null; }
 
-    @Override
-    /** Helper do not play a turn. */
-    public void play(){ }
 
-    @Override
-    /** Helper's do not move.
-     * Once they have completed their task, they will remain in the home location and will do nothing. */
-    public void move(int direction){  }
+
+//    /** Helper does not play */
+//    @Override
+//    public void play(){ return; }
 
     @Override
     /** A helper's health will never change.
@@ -44,12 +38,20 @@ public class Helper extends Player {
      * @param p is a player that is interacting with this player
      */
     public void interact(Player p){
-        for (int i = this.peaches.size(); i > 0; i--) {
-            p.peaches.add(this.peaches.remove(0));
+        for (int i = 0; i < 10; i +=1) {
+            forceFeed(p);
         }
-        System.out.println(p.name + " now has " + p.peaches.size() + " peaches.");
+
     }
 
+    public void forceFeed(Player p) {
+        /*
+        simply eat a peach and gain health
+        */
+        int peachRipeness = this.getPeach().getRipeness();
+        p.setHealth(p.getHealth() + peachRipeness);
+        System.out.println(p + " has gained " + peachRipeness + " health" );
+    }
     /** Helpers will always have the same name/health, and quite possibly location*/
     @Override
     public boolean equals(Object o) {
