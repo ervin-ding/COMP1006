@@ -9,11 +9,12 @@ public class PeachGrove extends Location{
         super(p, description, people, peaches);
         peachTrees = new ArrayList<>();
         playersThatVisited = new ArrayList<>();
-        int numOfTrees = 10 + (int) (Math.random() * 5);
-        int numOfPeachesInTree = 10 + (int) (Math.random() * 5);
+        int numOfTrees = 10 + (int) (Math.random() * 5); //# of trees
+        int numOfPeachesInTree; //# of peaches
 
         for (int i = 0; i < numOfTrees; i+=1){
             List<Peach> peachTree = new ArrayList<>();
+            numOfPeachesInTree = 10 + (int) (Math.random() * 5);
             for (int e = 0; e < numOfPeachesInTree; e+=1){
                 Peach peach = new Peach(10,false);
                 peachTree.add(peach);
@@ -22,7 +23,7 @@ public class PeachGrove extends Location{
             peachTrees.add(peachTree);
         }
     }
-    //Generate peach trees.. list of lists of peaches.
+
 
 
 
@@ -35,9 +36,7 @@ public class PeachGrove extends Location{
         System.out.println("Players that visited: " + playersThatVisited.toString());
         beeSting(p);
         p.setLocation(this);
-
     }
-
 
     @Override
     public Peach getPeach(){
@@ -48,15 +47,14 @@ public class PeachGrove extends Location{
         return peachesAtLocation.remove(0);
     }
 
-
     public void beeSting(Player p) {
         int counter = 0;
         for (int i = 0; i < playersThatVisited.size(); i += 1) {
             if (playersThatVisited.get(i).equals(p)){
-                counter += 1;
                 if (Math.random() > 0.5) {
                     if (p.getHealth() > 0) {
                         p.setHealth(p.getHealth() - (5));
+                        counter += 1;
                     }
                     else {
                         this.exit(p);
@@ -66,22 +64,8 @@ public class PeachGrove extends Location{
                     }
                     System.out.println(p.getName() + " got stung " + counter + " times and has " + p.getHealth() + " health left.");
                 }
-
             }
         }
-        System.out.println(p.getName() + " has visited " + counter + " times");
     }
-
-
-    public int numberOfPeachesFromTrees(){
-        List<Peach> numOfPeaches = new ArrayList<>();
-        for (int i = 0; i < peachTrees.size(); i+=1) {
-            for (int e = 0; e < peachTrees.get(i).size(); e += 1) {
-                numOfPeaches.add(peachTrees.get(i).get(e));
-            }
-        }
-        return numOfPeaches.size();
-    }
-
 
 }

@@ -24,7 +24,7 @@ public class PeachHunter extends Player {
     public void addPeachPit(Location location){
         peachPits.add(location);
     }
-    //if peaches > 50, setLocation home.
+
     @Override //when location is set, grab as many peaches as possible.
     public void setLocation(Location location) {
         this.location = location;
@@ -80,7 +80,7 @@ public class PeachHunter extends Player {
         //drop all peaches at home
         while (peaches.size() > 0){
             location.addPeach(peaches.remove(0));
-            System.out.println(this + " dropped " + peaches.size() + " peaches Home" /*+this.getWorld().getHome()*/);
+            System.out.println(this + " dropped " + peaches.size() + " peaches Home");
         }
         //go back to a peachgrove if peaches are left.
         if (health > 0){
