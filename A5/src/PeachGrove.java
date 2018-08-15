@@ -35,6 +35,7 @@ public class PeachGrove extends Location{
         System.out.println("Players that visited: " + playersThatVisited.toString());
         beeSting(p);
         p.setLocation(this);
+
     }
 
 
@@ -58,8 +59,10 @@ public class PeachGrove extends Location{
                         p.setHealth(p.getHealth() - (5));
                     }
                     else {
+                        this.exit(p);
                         p.getWorld().getHome().enter(p);
                         p.setHealth(100);
+                        break;
                     }
                     System.out.println(p.getName() + " got stung " + counter + " times and has " + p.getHealth() + " health left.");
                 }

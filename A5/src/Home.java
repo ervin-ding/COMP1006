@@ -40,9 +40,9 @@ public class Home extends Location {
         for (int i = 0; i < 10; i++) { // instantiate 10 good peaches with varying levels of ripeness
             helper.peaches.add(new Peach(new Random().nextInt(10) + 1, false));
         }
-        helper.setLocation(l);
+        helper.getLocation().exit(helper);
+        l.enter(helper);
         helper.interact(p); // give the 10 ripe peaches to the player in distress
-        helper.setLocation(this);
     }
 
     // Home location does not store any peaches outside of player inventory

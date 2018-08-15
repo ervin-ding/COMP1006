@@ -17,9 +17,11 @@ public class Helper extends Player {
 
 
 
-//    /** Helper does not play */
-//    @Override
-//    public void play(){ return; }
+    /** Helper does not play */
+    @Override
+    public void play(){
+        location.exit(this);
+    }
 
     @Override
     /** A helper's health will never change.
@@ -41,6 +43,8 @@ public class Helper extends Player {
         for (int i = 0; i < 10; i +=1) {
             forceFeed(p);
         }
+        this.getLocation().exit(this);
+        getWorld().getHome().enter(this);
     }
 
     public void forceFeed(Player p) {

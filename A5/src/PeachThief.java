@@ -13,6 +13,7 @@ public class PeachThief extends Player{
      * @param health   is the health of the player (which may or may not be relevant in your game)
      * @param rgb
      */
+    private boolean didSteal;
     public PeachThief(World w, String name, Location location, List<Peach> peaches, int health, RGB rgb) {
         super(w, name, location, peaches, health, rgb);
 
@@ -30,9 +31,18 @@ public class PeachThief extends Player{
         if (target != null) {
             steal(target);
         }
+        //pick up peaches
+        if (location.numberOfPeaches() > 0){
+            for (int i = 0; i < 5; i+=1){
+                this.peaches.add(location.getPeach());
+                if (location.numberOfPeaches() == 0) {
+                    break;
+                }
+            }
+        }
     }
 
-    protected boolean probs;
+    protected boolean probability;
     public void eat(Peach p) {
         /*
         simply eat a peach and gain health
@@ -46,19 +56,23 @@ public class PeachThief extends Player{
             interact with a player
             stealing a peach
              */
+            didSteal = false;
         if (p.peaches.size() > 0) {
             eat(p.getPeach());
-            System.out.println("This player has stolen a peach");
+            System.out.println(this + " player has stolen a peach");
+            didSteal = true;
         }
     }
 
     public void steal(Player p){
         Random rand = new Random();
-        probs = rand.nextDouble() < 0.75;
-            if (probs) {
+        probability = rand.nextDouble() < 0.75;
+            if (probability) {
                 System.out.println(this + " is stealing from player " + p);
                 interact(p);
-                steal(p);
+                if (didSteal) {
+                    steal(p);
+                }
             }
         }
     }

@@ -27,7 +27,7 @@ public class PeachHunter extends Player {
     //if peaches > 50, setLocation home.
     @Override //when location is set, grab as many peaches as possible.
     public void setLocation(Location location) {
-        super.setLocation(location);
+        this.location = location;
         if (health >= 50){
             maxPeaches = 100;
             healthBelowFifty = false;
@@ -58,20 +58,24 @@ public class PeachHunter extends Player {
             if (peaches.size() >= 50 && location.numberOfPeaches() > 0) {
                 goHomeAndReturnToPeachGrove();
             }
-            else {
+            else if (location instanceof PeachGrove){
+                getLocation().exit(this);
                 getWorld().getHome().enter(this);
             }
         }
-        else if (healthBelowFifty && (!location.equals(getWorld().getHome()))){
-            if (peaches.size() == 25 && location.numberOfPeaches() > 0){
+        else if (healthBelowFifty && (!location.equals(getWorld().getHome()))) {
+            if (peaches.size() == 25 && location.numberOfPeaches() > 0) {
                 goHomeAndReturnToPeachGrove();
             }
-            else {
+            else if (location instanceof PeachGrove) {
+                getLocation().exit(this);
                 getWorld().getHome().enter(this);
             }
+
         }
     }
     protected void goHomeAndReturnToPeachGrove() {
+        getLocation().exit(this);
         getWorld().getHome().enter(this);
         //drop all peaches at home
         while (peaches.size() > 0){
@@ -79,21 +83,29 @@ public class PeachHunter extends Player {
             System.out.println(this + " dropped " + peaches.size() + " peaches Home" /*+this.getWorld().getHome()*/);
         }
         //go back to a peachgrove if peaches are left.
-        if (health <= 0){
+        if (health > 0){
             for (int i = 0; i < peachGroves.size(); i += 1) {
                 if (peachGroves.get(i).numberOfPeaches() > 0) {
+                    getLocation().exit(this);
                     peachGroves.get(i).enter(this);
                 }
             }
         }
+//        else {
+//            getLocation().exit(this);
+//            getWorld().getHome().enter(this);
+//        }
     }
 
     @Override //Check for if less than 50, drop peaches until 25 peaches
     public void setHealth(int h){
         this.health = h;
         if (health < 50){
-            while (peaches.size() > 25){
-                location.addPeach(peaches.remove(0));
+            if (peaches.size() > 25) {
+                System.out.println("Dropping "+ (peaches.size()-25) + " peaches at " +getLocation() );
+                while (peaches.size() > 25) {
+                    location.addPeach(peaches.remove(0));
+                }
             }
         }
     }

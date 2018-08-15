@@ -35,8 +35,7 @@ public class PitFinder extends Player {
 
                 setLocation(getWorld().getHome());
 
-                Home home = (Home) getWorld().getHome();
-                home.addPeachPit(location);
+                getWorld().getHome().addPeachPit(location);
 
                 setLocation(location);
 
@@ -49,6 +48,13 @@ public class PitFinder extends Player {
             }
 
         }
+        Player target = null;
+        for (int i = 0; i < location.getPlayers().size(); i += 1) {
+            if (location.getPlayers().get(i) instanceof PeachHunter) {
+                target = location.getPlayers().get(i);
+            }
+        }
+        interact(target);
 
     }
 
@@ -71,8 +77,6 @@ public class PitFinder extends Player {
                     location.addPeach(this.getPeach());
 
 
-
-
                 }
 
             }
@@ -84,7 +88,6 @@ public class PitFinder extends Player {
 
     @Override
     public void interact(Player p) {
-
 
         if (p instanceof PeachHunter) {
 
@@ -98,11 +101,10 @@ public class PitFinder extends Player {
 
                     ((PeachHunter) p).addPeachPit(pitLocations.get(0));
 
-                    for (int i = 0; i < 5; i++) {
+                    for (int i = 0; i < 5; i+=1) {
 
+                        System.out.println(p + " has " + p.peaches.size() + " peaches left");
                         this.peaches.add(p.getPeach());
-
-
 
                     }
 
