@@ -41,7 +41,6 @@ public class Helper extends Player {
         for (int i = 0; i < 10; i +=1) {
             forceFeed(p);
         }
-
     }
 
     public void forceFeed(Player p) {

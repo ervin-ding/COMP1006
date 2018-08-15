@@ -15,7 +15,23 @@ public class PeachThief extends Player{
      */
     public PeachThief(World w, String name, Location location, List<Peach> peaches, int health, RGB rgb) {
         super(w, name, location, peaches, health, rgb);
+
     }
+
+    @Override
+    public void setLocation(Location location){
+        this.location = location;
+        Player target = null;
+        for (int i = 0; i < location.getPlayers().size(); i += 1) {
+            if (location.getPlayers().get(i) instanceof PeachHunter || location.getPlayers().get(i) instanceof PitFinder) {
+                target = location.getPlayers().get(i);
+            }
+        }
+        if (target != null) {
+            steal(target);
+        }
+    }
+
     protected boolean probs;
     public void eat(Peach p) {
         /*
@@ -25,13 +41,15 @@ public class PeachThief extends Player{
         System.out.println(this + " has gained 10 health");
     }
     @Override
-    public void interact(Player p){
+    public void interact(Player p) {
             /*
             interact with a player
             stealing a peach
              */
+        if (p.peaches.size() > 0) {
             eat(p.getPeach());
             System.out.println("This player has stolen a peach");
+        }
     }
 
     public void steal(Player p){
