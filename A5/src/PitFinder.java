@@ -46,13 +46,13 @@ public class PitFinder extends Player {
             }
 
         }
-//        Player target = null;
-//        for (int i = 0; i < location.getPlayers().size(); i += 1) {
-//            if (location.getPlayers().get(i) instanceof PeachHunter) {
-//                target = location.getPlayers().get(i);
-//            }
-//        }
-//        interact(target);
+        Player target = null;
+        for (int i = 0; i < location.getPlayers().size(); i += 1) {
+            if (location.getPlayers().get(i) instanceof PeachHunter) {
+                target = location.getPlayers().get(i);
+            }
+        }
+        interact(target);
 
     }
 

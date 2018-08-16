@@ -59,8 +59,8 @@ public class Player{
      getHelp();
      return;
    }
+   // move randomly
    int num = (int)(Math.random() * 4);
-   System.out.println(num);
    this.move(num);
  }
  
@@ -73,7 +73,6 @@ public class Player{
    */
  public void move(int direction){
    // move from current location to new location (if possible)
-     System.out.println(this + " has moved " + direction);
    world.move(this, direction);
 
  }

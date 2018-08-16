@@ -13,6 +13,7 @@ public class PeachHunter extends Player {
     protected boolean healthBelowFifty;
     protected List<Location> peachGroves;
     protected List <Location> peachPits;
+
     public PeachHunter(World w, String name, Location location, List<Peach> peaches, int health, RGB rgb) {
         super(w, name, location, peaches, health, rgb);
         maxPeaches = 100;
@@ -21,11 +22,12 @@ public class PeachHunter extends Player {
         peachPits = new ArrayList<>();
     }
 
+    // add a peachpit location to the list (from pitfinder)
     public void addPeachPit(Location location){
         peachPits.add(location);
     }
 
-    @Override //when location is set, grab as many peaches as possible.
+    @Override //when location is set, grab as many peaches as possible and return home if "full"
     public void setLocation(Location location) {
         this.location = location;
         if (health >= 50){
@@ -36,10 +38,9 @@ public class PeachHunter extends Player {
             maxPeaches = 25;
             healthBelowFifty = true;
         }
-        //if the description of the location matches the description of a peachgrove, check if the position is already
-        //in the peachGroves list. If not, add it to the list.
+
+        // add location to list of peachgroves
         if (location instanceof PeachGrove) {
-           // isPeachGrove = true;
             if (!peachGroves.contains(location)) {
                 peachGroves.add(location);
                 System.out.println("This PeachGrove has been added to " + this + "\'s lists of PeachGroves");
@@ -53,7 +54,7 @@ public class PeachHunter extends Player {
                 System.out.println(this + " grabbed " + peaches.size() + " peaches from " + location + ". Peaches left: " + location.numberOfPeaches());
             }
         }
-
+        // check health and location to see where the player will end up
         if (!healthBelowFifty && (!location.equals(getWorld().getHome()))) {
             if (peaches.size() >= 50 && location.numberOfPeaches() > 0) {
                 goHomeAndReturnToPeachGrove();
@@ -74,6 +75,7 @@ public class PeachHunter extends Player {
 
         }
     }
+
     protected void goHomeAndReturnToPeachGrove() {
         getLocation().exit(this);
         getWorld().getHome().enter(this);
@@ -91,10 +93,7 @@ public class PeachHunter extends Player {
                 }
             }
         }
-        else {
-            getLocation().exit(this);
-            getWorld().getHome().enter(this);
-        }
+
     }
 
     @Override //Check for if less than 50, drop peaches until 25 peaches

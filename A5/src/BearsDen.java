@@ -16,7 +16,6 @@ public class BearsDen extends Location {
         this.safePlayers = new ArrayList<Player>();
         this.visitedPlayers = new ArrayList<Player>();
 
-
     }
 
     @Override
@@ -52,8 +51,12 @@ public class BearsDen extends Location {
 
                 System.out.println(p.getName() + " health is now " + p.getHealth());
 
-
-
+                if (p.getHealth() <= 0) { // player has less than 0 health.
+                    this.exit(p);
+                    p.getWorld().getHome().enter(p);
+                    p.setHealth(100);
+                    System.out.println(p + " has died and been sent home, health restored");
+                }
 
             }else{
 
@@ -88,6 +91,13 @@ public class BearsDen extends Location {
 
                 p.setHealth(p.getHealth() - 25);
 
+                if (p.getHealth() <= 0) { // player has less than 0 health.
+                    this.exit(p);
+                    p.getWorld().getHome().enter(p);
+                    p.setHealth(100);
+                    System.out.println(p + " has died and been sent home, health restored");
+                }
+
                 System.out.println(p.getName() + " did not offer any peaches to the bear. The bear attacks and their health decreases by 25.");
                 System.out.println(p.getName() + " health is now " + p.getHealth());
 
@@ -97,12 +107,9 @@ public class BearsDen extends Location {
 
                 for (int i = 0; i <= 1; i++) {
 
-                    p.peaches.remove(i);
+                    p.peaches.remove(0);
 
                     safePlayers.add(p);
-
-
-
 
 
                 }

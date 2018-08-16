@@ -1,5 +1,4 @@
-package com.company;
-public class TestImage{
+package com.company;public class TestImage{
     static Position p00 = new Position(0,0);
     static Position p11 = new Position(1,1);
     static Position p01 = new Position(0,1);
@@ -604,6 +603,8 @@ public class TestImage{
 
 
 }
+
+
 
 
 

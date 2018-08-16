@@ -15,7 +15,7 @@ public class PeachesGame{
     World w = new World();
     PitFinder pitFinder = new PitFinder(w, "PitFinder", w.home, generatePeaches(5), 100, RGB.YELLOW);
     PeachThief peachThief = new PeachThief(w, "PeachThief", w.home, new ArrayList<Peach>(), 100, RGB.BLUE);
-    PeachHunter peachHunter = new PeachHunter(w, "PeachHunter", w.home, generatePeaches(5), 100, RGB.RED);
+    PeachHunter peachHunter = new PeachHunter(w, "PeachHunter", w.home, generatePeaches(10), 100, RGB.RED);
 
     w.addPlayer(pitFinder).addPlayer(peachThief).addPlayer(peachHunter);
 
@@ -33,7 +33,7 @@ public class PeachesGame{
 
     while (w.getHome().numberOfPeaches() < 100) {
       // iterate over all locations in the world
-      System.out.println("peaches at home: " + w.getHome().numberOfPeaches());
+      System.out.println("peaches at home: " + w.getHome().getPeaches());
       for (Location location : w.getLocations()) {
         // iterate over all players in the current location
           for (int i = 0; i < location.getPlayers().size(); i += 1) {
@@ -42,16 +42,10 @@ public class PeachesGame{
               System.out.println(player.getName() + ", " + player.getLocation());
               player.play();
             }
-            else {
-              break;
-            }
-            break;
           }
-          break;
         }
       }
-    System.out.println(w.getHome().numberOfPeaches());
-      System.out.println("wIN WIN WIN");
-
+      System.out.println(w.getHome().numberOfPeaches());
+      System.out.println("WIN WIN WIN");
     }
 }

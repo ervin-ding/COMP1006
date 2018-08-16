@@ -43,13 +43,6 @@ public class Helper extends Player {
                 forceFeed(p);
             }
         }
-        getLocation().exit(this);
-        getWorld().getHome().enter(this);
-        for (int i = 0; i < getWorld().getPlayers().size(); i += 1){
-            if (getWorld().getPlayers().get(i).equals(this)){
-                getWorld().players.remove(this);
-            }
-        }
     }
 
     public void forceFeed(Player p) {
@@ -60,14 +53,5 @@ public class Helper extends Player {
         p.setHealth(p.getHealth() + peachRipeness);
         System.out.println(p + " has gained " + peachRipeness + " health" );
     }
-//    /** Helpers will always have the same name/health, and quite possibly location*/
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) {
-//            return true;
-//        }
-//        return false;
-//    }
-
 
 }

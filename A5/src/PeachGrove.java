@@ -24,21 +24,17 @@ public class PeachGrove extends Location{
         }
     }
 
-
-
-
-    //Generate bees(numberOfTimesVisited.. have a method Sting(int numberOfTimesVisited) that stings the player 50%.
     @Override
     public void enter(Player p){
         System.out.println(p.getName() + " just entered location " + description + position);
-        playersThatVisited.add(p);
+        playersThatVisited.add(p); // add player to list of visited players
         peopleAtLocation.add(p);
         System.out.println("Players that visited: " + playersThatVisited.toString());
-        beeSting(p);
+        beeSting(p); // attack the player
         p.setLocation(this);
     }
 
-    @Override
+    @Override // returns a peach and removes it from both the list and the lists of trees
     public Peach getPeach(){
         Peach peach = peachesAtLocation.get(0);
         for (int i = 0; i < peachTrees.size(); i+=1) {
@@ -48,15 +44,15 @@ public class PeachGrove extends Location{
     }
 
     public void beeSting(Player p) {
-        int counter = 0;
-        for (int i = 0; i < playersThatVisited.size(); i += 1) {
+        int counter = 0; // used from printing purposes
+        for (int i = 0; i < playersThatVisited.size(); i += 1) { //since lists can have duplicates, iterate over the number of times that player is present in the list
             if (playersThatVisited.get(i).equals(p)){
                 if (Math.random() > 0.5) {
                     if (p.getHealth() > 0) {
                         p.setHealth(p.getHealth() - (5));
                         counter += 1;
                     }
-                    else {
+                    else { // player has less than 0 health.
                         this.exit(p);
                         p.getWorld().getHome().enter(p);
                         p.setHealth(100);

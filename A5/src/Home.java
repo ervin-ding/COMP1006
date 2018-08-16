@@ -1,20 +1,14 @@
 import java.util.*;
 
 public class Home extends Location {
-
-    // used to keep track of who has been in the pit;
-    protected ArrayList<Location> pitHome;
-
-    // used to keep track of peaches players have stockpiled at the Home location
-    protected Map<Player, ArrayList<Peach>> peaches;
+    protected ArrayList<Location> pitHome; // used to keep track of who has been in the pit;
+    protected Map<Player, ArrayList<Peach>> peaches; // used to keep track of peaches at the Home location
 
     public Home(Position p, String description, List<Player> people, List<Peach> peaches){
         super(p,description, people, peaches);
-        // ensures there will never be more than 1 home created
         this.peaches = new HashMap<Player, ArrayList<Peach>>();
         pitHome = new ArrayList<>();
     }
-
 
     public void addPeachPit(Location location){
         pitHome.add(location);
@@ -42,11 +36,8 @@ public class Home extends Location {
         helper.getLocation().exit(helper);
         l.enter(helper);
         helper.interact(p); // give the 10 ripe peaches to the player in distress
+        helper.getLocation().exit(helper);
+        this.enter(helper);
     }
-
-    // Home location does not store any peaches outside of player inventory
-    @Override
-    public Peach getPeach(){return null;}
-
 
 }

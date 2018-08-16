@@ -37,7 +37,7 @@ public class World{
     players.add(p);
     return this;
   }
-  
+  // added boundary checks
   public void move(Player p, int direction){
     Location loc = p.getLocation(); // player's current location
     int x = loc.getPosition().getX();
@@ -67,11 +67,7 @@ public class World{
         }
       default: break;
     }
-//    if (newLocation == null)
-//    {
-//      int num = (int) Math.random() *3;
-//      p.move(num);
-//    }
+
     if (newLocation == null){
       return;
     }
