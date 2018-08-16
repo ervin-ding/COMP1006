@@ -66,7 +66,6 @@ public class BearsDen extends Location {
 
         }else{
 
-
             bearAttack(p);
         }
 
